@@ -1,12 +1,12 @@
 ## Desafio do Ludo
 
-Considere o seguinte jogo hipotético muito semelhante ao Ludo, onde algumas de suas mecânicas foram modificadas simplificadas.
+Considere um jogo de Ludo hipotético, simplificado em relação ao jogo original.
 
-Numa partida desse jogo, os jogadores se alternam em rodadas, numa ordem definida aleatoriamente no começo da partida. Os jogadores sempre começam uma partida com 4 pinos na base de início do jogo.
+Numa partida desse jogo, os jogadores se alternam em rodadas, numa ordem definida aleatoriamente no começo da partida. Os jogadores sempre começam uma partida com 4 pinos cada um na base de onde o jogo se inicia.
 
 Nesse jogo, o tabuleiro é composto por 36 espaços em sequência, conectando a base ao pódio. 
 
-A base ocupa a posição 0 e o pódio a posição 37, não há limites para a quantidade de pinos en eses elementos. Com exceção da base e do pódio, cada espaço só poderá ser ocupado por 1 pino. 
+A base ocupa a posição 0 e o pódio a posição 37, não há limites para a quantidade de pinos nessas posições. Com exceção da base e do pódio, cada espaço só poderá ser ocupado por 1 pino. 
 
 No começo da sua vez, o jogador joga um dado equiprovável de 6 faces que determina quantos espaços no tabuleiro o jogador poderá andar. O jogador somente poderá andar com um pino da base caso obtenha o valor 1 ou o valor 6. O jogador somente poderá colocar um pino no pódio caso nao tenha nenhum pino na base. Caso não haja ações disponíveis, o jogador perde a vez. 
 
@@ -29,4 +29,4 @@ Os comportamentos definidos são:
 - O jogador sacana primeiro irá retirar todos os pinos da base e deixará um pino no espaço 1 e/ou no espaço 6 o máximo de possível, enquanto os outros pinos chegam ao pódio.
 - O jogador prioridade irá levar o pino disponível para mais próximo do pódio antes de retirar outro pino da base..
 
-Caso o jogo demore muito, como é de costume em jogos dessa natureza, o jogo termina na milésima rodada com a vitória do jogador que colocou mais pinos no pódio. O critério de desempate é a ordem de turno dos jogadores nesta partida.
+Caso o jogo demore muito, você pode terminar o jogo na milésima rodada com a vitória do jogador que colocou mais pinos no pódio. O critério de desempate é a ordem de turno dos jogadores nesta partida.
