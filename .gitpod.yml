@@ -1,0 +1,8 @@
+tasks:
+  - init: pip install pytest && pip install rerun
+    command: rerun pytest
+
+vscode:
+  extensions:
+    - littlefoxteam.vscode-python-test-adapter@0.5.0:MOFjKFx34CxWS0nqmAG75g==
+    - hbenl.vscode-test-explorer@2.19.2:8rKHUShFJJd0UivektEkng==
