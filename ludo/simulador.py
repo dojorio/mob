@@ -1,10 +1,4 @@
 
-# def ludo(jogador, dado):
-#     return jogador.pinos
-
-# class Jogador:
-#     def __init__(self, pinos=[0, 0, 0, 0]):
-#         self.pinos = pinos
 
 class CasaOcupada(Exception):
     ...
