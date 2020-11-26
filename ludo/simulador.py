@@ -1,42 +1,40 @@
+from itertools import product
 
+class MovimentoInicialInvalido(Exception): pass
+class CasaOcupada(Exception): pass
+class JogadorAindaTemPinosNaBase(Exception): pass
+class PinoPassouDoPodio(Exception): pass
 
-class CasaOcupada(Exception):
-    ...
+class Tabuleiro(dict):
+    _JOGADORES = _PINOS = (1, 2, 3, 4)
+    _BASE = 0
+    _PODIO = 37
+    _MOVIMENTOS_INICIAIS_VALIDOS = (1, 6)
 
-class MovimentoInicialInvalido(Exception):
-    ...
-
-class MovimentoFinalInvalido(Exception):
-    ...
-
-class TemPinoNaBase(Exception):
-    ...
-
-class Tabuleiro:
     def __init__(self):
-        self.posicoes = [None] * 38
+        for jp in product(self._JOGADORES, self._PINOS):
+            self[jp] = self._BASE
 
-    def posiciona(self, pino, posicao):
-        self.posicoes[posicao] = pino
+    def posicao(self, jogador, pino):
+        return self[jogador, pino]
 
-    def movimenta(self, pino, passos):
-        posicao_atual = self.posicao(pino)
-        nova_posicao = posicao_atual + passos
+    def mover(self, jogador, pino, passos):
+        posicao_atual = self[jogador, pino]
 
-        if nova_posicao == 37 and self.posicoes[0]:
-            raise TemPinoNaBase()
-
-        if nova_posicao > 37:
-            raise MovimentoFinalInvalido()
-
-        if posicao_atual == 0 and passos not in (1, 6):
+        if posicao_atual == self._BASE and not passos in self._MOVIMENTOS_INICIAIS_VALIDOS:
             raise MovimentoInicialInvalido()
-
-        if self.posicoes[nova_posicao]:
+        
+        nova_posicao = posicao_atual + passos
+        if nova_posicao in self.values():
             raise CasaOcupada()
 
-        self.posicoes[posicao_atual] = None
-        self.posicoes[nova_posicao] = pino
+        if nova_posicao > self._PODIO:
+            raise PinoPassouDoPodio()
 
-    def posicao(self, pino):
-        return self.posicoes.index(pino)
+        if nova_posicao == self._PODIO and self._tem_pinos_na_base(jogador):
+            raise JogadorAindaTemPinosNaBase()
+        
+        self[jogador, pino] = nova_posicao
+        
+    def _tem_pinos_na_base(self, jogador):
+        return not all((self[jp] for jp in product([jogador], self._PINOS)))

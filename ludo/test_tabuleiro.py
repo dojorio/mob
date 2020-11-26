@@ -1,36 +1,62 @@
-# import pytest
+import pytest
 
-# from simulador import *
+from simulador import *
 
+def test_tabuleiro():
+    tabuleiro = Tabuleiro()
+    assert tabuleiro.posicao(jogador=1, pino=1) == 0
+    assert tabuleiro.posicao(jogador=4, pino=4) == 0
 
-# def test_movimenta_pino_no_tabuleiro():
-#     tabuleiro = Tabuleiro()
-#     tabuleiro.posiciona('pino', 0)
-#     tabuleiro.movimenta('pino', 1)
-#     assert tabuleiro.posicao('pino') == 1
+def test_movimentos_iniciais_validos():
+    tabuleiro = Tabuleiro()
+    tabuleiro.mover(jogador=1, pino=1, passos=1)
+    assert tabuleiro.posicao(jogador=1, pino=1) == 1
 
-#     tabuleiro.posiciona('outro_pino', 0)
-#     with pytest.raises(CasaOcupada):
-#         tabuleiro.movimenta('outro_pino', 1)
+    tabuleiro.mover(jogador=2, pino=1, passos=6)
+    assert tabuleiro.posicao(jogador=2, pino=1) == 6
 
-# def test_pino_nao_sai_da_base():
-#     tabuleiro = Tabuleiro()
-#     tabuleiro.posiciona('pino', 0)
+@pytest.mark.parametrize('passos', (2, 3, 4, 5))
+def test_movimentos_iniciais_ilegais(passos):
+    tabuleiro = Tabuleiro()
+    with pytest.raises(MovimentoInicialInvalido):
+        tabuleiro.mover(jogador=1, pino=1, passos=passos)
+    assert tabuleiro.posicao(jogador=1, pino=1) == 0
 
-#     with pytest.raises(MovimentoInicialInvalido):
-#         tabuleiro.movimenta('pino', 2)
+def test_movimento_valido_para_casa_ocupada():
+    tabuleiro = Tabuleiro()
+    tabuleiro.mover(jogador=1, pino=1, passos=1)
 
-# def test_pino_nao_entra_no_podio():
-#     tabuleiro = Tabuleiro()
-#     tabuleiro.posiciona('pino', 36)
+    with pytest.raises(CasaOcupada):
+        tabuleiro.mover(jogador=2, pino=1, passos=1)
 
-#     with pytest.raises(MovimentoFinalInvalido):
-#         tabuleiro.movimenta('pino', 2)
+def test_nao_entra_no_podio_com_pinos_ainda_na_base():
+    tabuleiro = Tabuleiro()
+    tabuleiro.mover(jogador=1, pino=1, passos=6)
 
-# def test_pino_nao_entra_no_podio():
-#     tabuleiro = Tabuleiro()
-#     tabuleiro.posiciona('pino', 36)
-#     tabuleiro.posiciona('outro_pino', 0)
+    with pytest.raises(JogadorAindaTemPinosNaBase):
+        tabuleiro.mover(jogador=1, pino=1, passos=31)
 
-#     with pytest.raises(TemPinoNaBase):
-#         tabuleiro.movimenta('pino', 1)
+def test_nao_entra_no_podio():
+    tabuleiro = Tabuleiro()
+
+    for pino in tabuleiro._PINOS:
+        tabuleiro.mover(jogador=1, pino=pino, passos=6)
+        tabuleiro.mover(jogador=1, pino=pino, passos=pino)
+
+    with pytest.raises(PinoPassouDoPodio):
+        tabuleiro.mover(jogador=1, pino=1, passos=31)
+
+def test_pino_entra_no_podio():
+    tabuleiro = Tabuleiro()
+
+    for pino in tabuleiro._PINOS:
+        tabuleiro.mover(jogador=1, pino=pino, passos=6)
+        tabuleiro.mover(jogador=1, pino=pino, passos=pino)
+
+    tabuleiro.mover(jogador=1, pino=1, passos=30)
+
+    assert tabuleiro.posicao(jogador=1, pino=1) == tabuleiro._PODIO
+
+def test_base_vazia_para_um_jogador():
+    tabuleiro = Tabuleiro()
+    assert tabuleiro._tem_pinos_na_base(jogador=1)
