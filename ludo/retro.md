@@ -1,3 +1,29 @@
+# Dia 26/11/2020
+
+## Participantes:
+
+- Celestino Gomes
+- Cláudio Berrondo
+- Patrícia
+- Antonio via Youtube!
+
+## :)
+
+- limpamos o código
+- voltamos ao 8x8 graças aos nossos patrocinadores! (Tino...)
+- Patrícia participou bastante!
+
+## :(
+
+- o problema tá bem difícil...
+- quorum baixo!
+- teve o pessoal que apareceu e não ficou, pena!
+
+## ?
+
+- 
+
+
 # Dia 23/11/2020
 
 ## Participantes:

@@ -1,6 +1,6 @@
 import pytest
 
-from simulador import *
+from tabuleiro import *
 
 def test_tabuleiro():
     tabuleiro = Tabuleiro()
@@ -57,6 +57,15 @@ def test_pino_entra_no_podio():
 
     assert tabuleiro.posicao(jogador=1, pino=1) == tabuleiro._PODIO
 
-def test_base_vazia_para_um_jogador():
+def test_jogador_tem_pino_na_base():
     tabuleiro = Tabuleiro()
     assert tabuleiro._tem_pinos_na_base(jogador=1)
+
+def test_jogador_nao_tem_pino_na_base():
+    tabuleiro = Tabuleiro()
+
+    for pino in tabuleiro._PINOS:
+        tabuleiro.mover(jogador=1, pino=pino, passos=6)
+        tabuleiro.mover(jogador=1, pino=pino, passos=pino)
+
+    assert not tabuleiro._tem_pinos_na_base(jogador=1)
