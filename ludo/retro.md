@@ -1,3 +1,29 @@
+# Dia 30/11/2020
+
+## Participantes:
+
+- Celestino Gomes
+- Cláudio Berrondo
+- Maurício Fagundes
+- Leo Conceição
+
+## :)
+
+- mas rolou o Ludo
+- e com o Leo!!!
+- Maurício consertou o código da sessão da passada (ele é rei do gist...)
+- Celestino é rei do lambda!!
+
+## :(
+
+- não rolou o MOB do pyp5js!!! :(
+- não implementamos o sacana!
+
+## ?
+
+- Estrategia como classe? herdando de list? ???
+
+
 # Dia 26/11/2020
 
 ## Participantes:
