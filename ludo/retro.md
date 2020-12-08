@@ -1,3 +1,28 @@
+# Dia 07/12/2020
+
+## Participantes:
+
+- Celestino Gomes
+- Cláudio Berrondo
+- Maurício Fagundes
+- Igo Melo (No Youtube)
+
+## :)
+
+- Refatoração, usando namespace
+- Testes, graças a Deus!
+
+## :(
+
+- Tino atrasado, mas chegou
+- Igo Melo ficou só no Youtube, em vez de aparecer no Mob
+
+## ?
+
+- não é que o passo é necessário a estratégia?!
+- Tino, e esses lambdas aí?....
+
+
 # Dia 30/11/2020
 
 ## Participantes:
