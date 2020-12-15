@@ -11,9 +11,12 @@ import pytest
     # todos fora da base
     ((4, 3, 2, 1), 1, [1, 2, 3, 4]),
     ((6, 3, 2, 1), 1, [2, 3, 1, 4]),
-    ((6, 3, 25, 1), 1, [3, 2, 1, 4]),
-    ((7, 3, 25, 1), 1, [3, 1, 2, 4]),
+    ((6, 3, 25, 1), 1, [2, 3, 1, 4]),
+    ((7, 3, 25, 1), 1, [2, 3, 1, 4]),
     ((7, 3, 25, 1), 3, [2, 3, 1, 4]),
+    ((7, 3, 25, 1), 5, [3, 1, 2, 4]),
+    ((7, 3, 25, 1), 2, [2, 3, 1, 4]),
+    ((4, 3, 2, 1), 3, [2, 3, 1, 4]),
 ))
 def test_estrategia_sacana(pinos, passos, ordem):
     assert sacana(pinos, passos) == ordem
@@ -50,13 +53,16 @@ def test_estrategia_prioridade(pinos, passos, ordem):
 def test_estrategia_veloz(pinos, passos, ordem):
     assert veloz(pinos, passos) == ordem
 
-@pytest.mark.parametrize('posicoes, ordenador', (
-    ((4, 3, 2, 1), [-4, -3, -2, 1]),
-    ((6, 3, 2, 1), [0, -3, -2, 1]),
+@pytest.mark.parametrize('posicoes, passos, ordenador', (
+    ((4, 3, 2, 1), 10, [-4, -3, -2, 1]),
+    ((6, 3, 2, 1), 10, [0, -3, -2, 1]),
+    ([7, 3, 25, 1], 3, [-7, -40, -25, 1]),
+    ((4, 3, 2, 1), 3, [-4, -40, -39, 1]),
 ))
-def test_mantem_bloqueio(posicoes, ordenador):
+def test_mantem_bloqueio(posicoes, passos, ordenador):
     lista = []
     s = Estrategia.Sacana()
+    s.passos = passos
     s.posicoes_dos_pinos = posicoes
     for pino, posicao in enumerate(posicoes, start=1):
         lista.append(s.manter_bloqueio(pino))

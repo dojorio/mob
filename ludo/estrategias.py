@@ -67,10 +67,16 @@ class Estrategia:
         # lambda x: self.posicoes_dos_pinos[x-1] % 6 if x in (1, 6) else -self.posicoes_dos_pinos[x-1]
         def manter_bloqueio(self, pino):
             pp = self.posicoes_dos_pinos[pino-1]
-            return pp % 6 if pp in (1, 6) else -pp
+            if (pp + self.passos) <= 6 and pp > 1:
+                return -Tabuleiro._PODIO-pp
+            elif pp in (1, 6):
+                return pp % 6
+            else:
+                return -pp
         
         def sequencia(self, posicoes_dos_pinos, passos):
             self.posicoes_dos_pinos = posicoes_dos_pinos
+            self.passos = passos
 
             chave_de_ordenacao = lambda x: self.tirar_da_base_primeiro()[x-1]
 

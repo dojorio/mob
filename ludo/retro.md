@@ -1,3 +1,29 @@
+# Dia 14/12/2020
+
+## Participantes:
+
+- Antônio 
+- Bruno Osório (chegou no final)
+- Cassio Augusto
+- Celestino Gomes
+- Cláudio Berrondo
+- Dani (Chegou e saiu)
+
+## :)
+
+- Passamos dos 200 inscritos no canal https://youtube.com/dojorio
+- Rolou Mob
+- Celestino manda muito bem na matematica discreta
+
+## :(
+
+- Internet o Antonio zoada
+- Pessoal ficou quieto
+
+## ?
+
+- Como fazemos para vir mais pessoas participar do Mob?
+
 # Dia 07/12/2020
 
 ## Participantes:
